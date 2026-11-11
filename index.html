@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ricardo Oliveira · Day One Experience</title>
+<meta name="description" content="Fotos do Ricardo Oliveira no Day One Experience, 07.11 em Alphaville. Em qualidade original para baixar.">
+<meta property="og:title" content="Ricardo Oliveira · Day One Experience">
+<meta property="og:description" content="Fotos do Ricardo Oliveira no Day One Experience, 07.11 em Alphaville. Em qualidade original para baixar.">
+<meta property="og:image" content="https://thsantosmercadolivre-lab.github.io/vitrine-ricardo-oliveira-day-one/web/01.jpg">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --preto: #0A0A0A;
+    --carvao: #141210;
+    --linha: #2a251a;
+    --ouro: #D9A633;
+    --ouro-claro: #E8C77A;
+    --creme: #F7EFD4;
+    --cinza: #8A8478;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--preto); }
+  body {
+    background: var(--preto); color: var(--creme);
+    font-family: 'Montserrat', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+
+  /* topo */
+  .topo {
+    max-width: 1400px; margin: 0 auto;
+    padding: 56px 16px 32px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .topo img { width: 64px; height: auto; margin-bottom: 22px; }
+  .selo {
+    font-size: 11px; font-weight: 700; letter-spacing: .32em; color: var(--ouro);
+    margin-bottom: 14px;
+  }
+  .topo h1 {
+    font-weight: 900; font-size: clamp(30px, 6vw, 56px); line-height: 1.02;
+    letter-spacing: -.02em; text-transform: uppercase;
+  }
+  .topo h1 em { font-style: normal; color: var(--ouro); }
+  .topo p { margin-top: 14px; font-size: 15px; color: var(--cinza); max-width: 520px; line-height: 1.5; }
+
+  .acoes { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 700 14px 'Montserrat', sans-serif; letter-spacing: .04em;
+    padding: 15px 24px; border-radius: 999px; border: 0; cursor: pointer;
+    text-decoration: none; transition: transform .15s, background .15s;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-ouro { background: var(--ouro); color: var(--preto); }
+  .btn-ouro:hover { background: var(--ouro-claro); }
+  .btn-linha { background: transparent; color: var(--creme); border: 1px solid var(--linha); }
+  .btn-linha:hover { border-color: var(--ouro); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .contagem { margin-top: 18px; font-size: 12px; color: var(--cinza); letter-spacing: .08em; }
+
+  /* pacotes zip */
+  .pacotes {
+    display: none; margin-top: 18px; width: 100%; max-width: 520px;
+    border: 1px solid var(--linha); border-radius: 18px; padding: 8px; text-align: left;
+  }
+  .pacotes.aberto { display: block; }
+  .pacotes a {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 14px 16px; border-radius: 12px; text-decoration: none; font-size: 14px; font-weight: 500;
+  }
+  .pacotes a:hover { background: var(--carvao); }
+  .pacotes a span { color: var(--cinza); font-size: 12px; white-space: nowrap; }
+  .pacotes small { display: block; padding: 8px 16px 10px; color: var(--cinza); font-size: 12px; line-height: 1.5; }
+
+  /* grade */
+  .grade {
+    max-width: 1400px; margin: 0 auto; padding: 0 16px 40px;
+    columns: 4 260px; column-gap: 10px;
+  }
+  .foto {
+    position: relative; break-inside: avoid; margin-bottom: 10px;
+    border-radius: 10px; overflow: hidden; background: var(--carvao); cursor: zoom-in;
+  }
+  .foto img { display: block; width: 100%; height: auto; opacity: 0; transition: opacity .4s; }
+  .foto img.ok { opacity: 1; }
+  .foto .baixar {
+    position: absolute; right: 8px; bottom: 8px;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(10,10,10,.72); color: var(--creme);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity .2s, background .2s;
+  }
+  .foto .baixar svg { width: 18px; height: 18px; }
+  .foto:hover .baixar { opacity: 1; }
+  .foto .baixar:hover { background: var(--ouro); color: var(--preto); }
+  @media (hover: none) { .foto .baixar { opacity: 1; } }
+
+  footer {
+    text-align: center; padding: 30px 16px 48px; font-size: 11px;
+    letter-spacing: .28em; color: #5a554b;
+  }
+
+  /* tela cheia */
+  .tela {
+    position: fixed; inset: 0; z-index: 10; background: rgba(6,6,6,.97);
+    display: none; flex-direction: column;
+  }
+  .tela.aberta { display: flex; }
+  .tela-topo {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top));
+  }
+  .tela-topo .num { font-size: 13px; color: var(--cinza); letter-spacing: .08em; }
+  .tela-topo .dir { display: flex; gap: 8px; align-items: center; }
+  .tela-topo .btn { padding: 11px 18px; font-size: 13px; }
+  .fechar {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linha);
+    background: transparent; color: var(--creme); cursor: pointer; display: grid; place-items: center;
+  }
+  .fechar svg { width: 18px; height: 18px; }
+  .palco { flex: 1; position: relative; display: grid; place-items: center; min-height: 0; padding: 0 8px 16px; }
+  .palco img { max-width: 100%; max-height: calc(100vh - 96px); max-height: calc(100dvh - 96px); object-fit: contain; border-radius: 6px; user-select: none; }
+  .seta {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--linha);
+    background: rgba(10,10,10,.6); color: var(--creme); cursor: pointer; display: grid; place-items: center;
+  }
+  .seta:hover { border-color: var(--ouro); color: var(--ouro); }
+  .seta svg { width: 20px; height: 20px; }
+  .seta.esq { left: 16px; } .seta.dir { right: 16px; }
+  @media (max-width: 700px) { .seta { display: none; } .grade { columns: 2; column-gap: 6px; padding: 0 6px 30px; } .foto { margin-bottom: 6px; border-radius: 6px; } }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <img src="d1-simbolo.png" alt="Day One Club">
+  <div class="selo">DAY ONE EXPERIENCE · 07.11 · ALPHAVILLE</div>
+  <h1><em>Ricardo Oliveira</em> no Day One</h1>
+  <p>As fotos da palestra em qualidade original. Toque na foto pra ver grande e baixe sem marca d'água.</p>
+  <div class="acoes">
+    <button class="btn btn-ouro" id="btnTodas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>
+      Baixar todas
+    </button>
+  </div>
+  <div class="pacotes" id="pacotes"></div>
+  <div class="contagem" id="contagem"></div>
+</header>
+
+<main class="grade" id="grade"></main>
+
+<footer>DAY ONE CLUB · THIAGO SANTOS</footer>
+
+<div class="tela" id="tela" role="dialog" aria-modal="true" aria-label="Foto em tela cheia">
+  <div class="tela-topo">
+    <span class="num" id="num"></span>
+    <div class="dir">
+      <a class="btn btn-ouro" id="baixarUma" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>
+        Baixar
+      </a>
+      <button class="fechar" id="fechar" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="palco" id="palco">
+    <button class="seta esq" id="ant" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img id="grande" alt="">
+    <button class="seta dir" id="prox" aria-label="Próxima"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+
+<script>
+// originais em qualidade cheia ficam no release "fotos" do repositorio
+const REPO = 'https://github.com/thsantosmercadolivre-lab/vitrine-ricardo-oliveira-day-one/releases/download/fotos/';
+const ICONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>';
+const original = id => REPO + 'ricardo-oliveira-day-one-' + id + '.jpg';
+
+let fotos = [], atual = 0;
+const $ = id => document.getElementById(id);
+
+fetch('fotos.json').then(r => r.json()).then(dados => {
+  fotos = dados.fotos;
+  $('contagem').textContent = fotos.length + ' FOTOS';
+
+  const frag = document.createDocumentFragment();
+  fotos.forEach((f, i) => {
+    const d = document.createElement('div');
+    d.className = 'foto';
+    d.innerHTML = '<img loading="lazy" decoding="async" src="thumbs/' + f.id + '.jpg" width="' + f.w + '" height="' + f.h + '" alt="Foto ' + (i + 1) + ' do Ricardo Oliveira no Day One Experience">'
+      + '<a class="baixar" href="' + original(f.id) + '" download aria-label="Baixar foto ' + (i + 1) + '">' + ICONE + '</a>';
+    const img = d.querySelector('img');
+    img.onload = () => img.classList.add('ok');
+    if (img.complete) img.classList.add('ok');
+    d.addEventListener('click', e => { if (!e.target.closest('.baixar')) abrir(i); });
+    frag.appendChild(d);
+  });
+  $('grade').appendChild(frag);
+
+  const z = dados.zips;
+  $('pacotes').innerHTML = z.map((p, k) =>
+    '<a href="' + REPO + p.nome + '" download>' + (z.length > 1 ? 'Parte ' + (k + 1) + ' · fotos ' + Number(p.de) + ' a ' + Number(p.ate) : 'Todas as fotos') + '<span>.zip · ' + p.mb + ' MB</span></a>'
+  ).join('') + '<small>Arquivo em qualidade original. Melhor baixar no Wi-Fi.</small>';
+});
+
+$('btnTodas').onclick = () => $('pacotes').classList.toggle('aberto');
+
+function mostrar() {
+  const f = fotos[atual];
+  $('grande').src = 'web/' + f.id + '.jpg';
+  $('grande').alt = 'Foto ' + (atual + 1);
+  $('num').textContent = (atual + 1) + ' / ' + fotos.length;
+  $('baixarUma').href = original(f.id);
+  [atual - 1, atual + 1].forEach(j => { if (fotos[j]) new Image().src = 'web/' + fotos[j].id + '.jpg'; });
+}
+function abrir(i) { atual = i; mostrar(); $('tela').classList.add('aberta'); document.body.style.overflow = 'hidden'; }
+function fechar() { $('tela').classList.remove('aberta'); document.body.style.overflow = ''; $('grande').removeAttribute('src'); }
+function passo(n) { atual = (atual + n + fotos.length) % fotos.length; mostrar(); }
+
+$('fechar').onclick = fechar;
+$('ant').onclick = e => { e.stopPropagation(); passo(-1); };
+$('prox').onclick = e => { e.stopPropagation(); passo(1); };
+$('palco').onclick = e => { if (e.target.id === 'palco') fechar(); };
+document.addEventListener('keydown', e => {
+  if (!$('tela').classList.contains('aberta')) return;
+  if (e.key === 'Escape') fechar();
+  if (e.key === 'ArrowLeft') passo(-1);
+  if (e.key === 'ArrowRight') passo(1);
+});
+let x0 = null;
+$('palco').addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+$('palco').addEventListener('touchend', e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 50) passo(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+</script>
+</body>
+</html>
